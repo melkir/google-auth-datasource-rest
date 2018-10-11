@@ -14,7 +14,7 @@ export interface GetGroupsQueryParams extends PaginatedQueryParams {
 export interface GetGroupsQueryResult extends PaginatedQueryResult {
   kind: 'admin#directory#groups'
   etag: string
-  groups: GetGroupQueryResult[]
+  groups: GetGroupQueryResult[] | null
 }
 
 export interface GetGroupQueryParams {
