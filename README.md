@@ -46,6 +46,7 @@ const typeDefs = gql`
 
   type Member {
     kind: String!
+    delivery_settings: String!
     email: String!
     etag: String!
     id: String!
