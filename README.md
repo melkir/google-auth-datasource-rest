@@ -1,7 +1,7 @@
 ## Installation
 
 ```bash
-yarn install google-auth-datasource-rest
+yarn add google-auth-datasource-rest
 ```
 
 ## Usage
