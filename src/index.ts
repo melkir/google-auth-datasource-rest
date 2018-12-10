@@ -54,12 +54,13 @@ export interface GetMemberQueryParams {
 
 export interface GetMemberQueryResult {
   kind: 'directory#member'
+  delivery_settings: string
   email: string
   etag: string
   id: string
   role: Role
-  type: Type
   status: Status
+  type: Type
 }
 
 interface PaginatedQueryParams {

@@ -43,6 +43,7 @@ describe('GoogleDataSource', () => {
 
   const memberProperties = {
     kind: 'admin#directory#member',
+    delivery_settings: expect.any(String),
     email: expect.any(String),
     etag: expect.any(String),
     id: expect.any(String),
