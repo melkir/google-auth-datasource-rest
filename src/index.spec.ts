@@ -58,18 +58,18 @@ describe('GoogleDataSource', () => {
   })
 
   it('getGroups() should return the groups', async () => {
-    const groups = await gApi.getGroups({ domain: 'domain.com' })
+    const groups = await gApi.getGroups({ domain: 'payfit.com' })
     expect(groups).toEqual(groupsProperties)
   })
 
   it('getGroup() should return a group', async () => {
-    const group = await gApi.getGroup({ groupKey: '01302y9210xl88b' })
+    const group = await gApi.getGroup({ groupKey: '01302m9210vl78u' })
     expect(group).toEqual(groupProperties)
   })
 
   it('getMembers() should return the members', async () => {
     const members = await gApi.getMembers({
-      groupKey: '01302y9210xl88b',
+      groupKey: '01302m9210vl78u',
       includeDerivedMembership: true,
     })
     expect(members).toEqual(membersProperties)
@@ -77,8 +77,8 @@ describe('GoogleDataSource', () => {
 
   it('getMember() should return the member', async () => {
     const member = await gApi.getMember({
-      groupKey: '01302y9210xl88b',
-      memberKey: '104517529564465626244',
+      groupKey: '01302m9210vl78u',
+      memberKey: '104405786331979936146',
     })
     expect(member).toEqual(memberProperties)
   })

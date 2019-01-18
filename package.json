@@ -2,7 +2,7 @@
   "name": "google-auth-datasource-rest",
   "description": "Apollo REST Datasource for querying Google Admin Directory",
   "author": "melkir13@gmail.com",
-  "version": "0.1.4",
+  "version": "0.2.1",
   "license": "ISC",
   "main": "lib/index.js",
   "scripts": {
@@ -12,19 +12,21 @@
   },
   "dependencies": {
     "apollo-datasource-rest": "^0.2.1",
-    "google-auth-library": "^2.0.1",
-    "graphql": "^14.0.2"
+    "google-auth-library": "^3.0.0"
+  },
+  "peerDependencies": {
+    "graphql": "^14.1.1"
   },
   "devDependencies": {
-    "@types/graphql": "^14.0.3",
-    "@types/jest": "^23.3.10",
-    "@types/node": "^10.12.12",
+    "@types/graphql": "^14.0.5",
+    "@types/jest": "^23.3.12",
+    "@types/node": "^10.12.18",
     "jest": "^23.6.0",
     "prettier": "^1.15.3",
-    "prettier-tslint": "^0.4.0",
+    "prettier-tslint": "^0.4.2",
     "ts-jest": "^23.10.5",
-    "tslint": "^5.11.0",
-    "typescript": "^3.2.2"
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
   },
   "jest": {
     "transform": {
