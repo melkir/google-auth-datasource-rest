@@ -1,37 +1,42 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
 import { OAuth2Client } from 'google-auth-library'
 
+import { Group, Member, Role, User } from './types'
+
+/** Generic interfaces */
+interface PaginatedQueryParams {
+  maxResults?: number
+  pageToken?: string
+}
+
+interface PaginatedQueryResult {
+  nextPageToken?: string
+}
+
+export type SortOrder = 'ASCENDING' | 'DESCENDING'
+
 /** Groups interfaces */
 export interface GetGroupsQueryParams extends PaginatedQueryParams {
   customer?: string
   domain?: string
-  orderBy?: OrderByField
+  orderBy?: 'email'
   query?: string
-  sortOrder?: SortingOrder
+  sortOrder?: SortOrder
   userKey?: string
 }
 
 export interface GetGroupsQueryResult extends PaginatedQueryResult {
   kind: 'admin#directory#groups'
   etag: string
-  groups: GetGroupQueryResult[] | null
+  groups: Group[] | null
 }
 
 export interface GetGroupQueryParams {
   groupKey: string
 }
 
-export interface GetGroupQueryResult {
+export interface GetGroupQueryResult extends Group {
   kind: 'admin#directory#group'
-  adminCreated: boolean
-  aliases?: Alias[]
-  description: string
-  directMembersCount: string
-  email: string
-  etag: string
-  id: string
-  name: string
-  nonEditableAliases?: Alias[]
 }
 
 /** Group members interfaces */
@@ -42,9 +47,9 @@ export interface GetMembersQueryParams extends PaginatedQueryParams {
 }
 
 export interface GetMembersQueryResult extends PaginatedQueryResult {
-  kind: 'directory#members'
+  kind: 'admin#directory#members'
   etag: string
-  members: GetMemberQueryResult[]
+  members: Member[]
 }
 
 export interface GetMemberQueryParams {
@@ -52,58 +57,45 @@ export interface GetMemberQueryParams {
   memberKey: string
 }
 
-export interface GetMemberQueryResult {
-  kind: 'directory#member'
-  delivery_settings: string
-  email: string
+export interface GetMemberQueryResult extends Member {
+  kind: 'admin#directory#member'
   etag: string
-  id: string
-  role: Role
-  status: Status
-  type: Type
 }
 
-interface PaginatedQueryParams {
-  maxResults?: number
-  pageToken?: string
+/** User interfaces */
+
+export interface GetUsersQueryParams extends PaginatedQueryParams {
+  customer?: string
+  domain?: string
+  orderBy?: OrderUserByField
+  customFieldMask?: string
+  projection?: Projection
+  viewType?: ViewType
+  query?: string
+  showDeleted?: boolean
+  sortOrder?: SortOrder
 }
 
-interface PaginatedQueryResult {
-  nextPageToken?: string
+export interface GetUsersQueryResult extends PaginatedQueryResult {
+  kind: 'admin#directory#users'
+  etag: string
+  users: User[]
 }
 
-export enum OrderByField {
-  email = 'email',
+export interface GetUserQueryParams {
+  userKey: string
+  customFieldMask?: string
+  projection?: Projection
+  viewType?: ViewType
 }
 
-export enum SortingOrder {
-  ASCENDING = 'ASCENDING',
-  DESCENDING = 'DESCENDING',
+export interface GetUserQueryResult extends User {
+  kind: 'admin#directory#user'
 }
 
-export enum Role {
-  OWNER = 'OWNER',
-  MEMBER = 'MEMBER',
-  MANAGER = 'MANAGER',
-}
-
-export enum Type {
-  CUSTOMER = 'CUSTOMER',
-  EXTERNAL = 'EXTERNAL',
-  GROUP = 'GROUP',
-  USER = 'USER',
-}
-
-export enum Status {
-  ACTIVE = 'ACTIVE',
-  ARCHIVED = 'ARCHIVED',
-  SUSPENDED = 'SUSPENDED',
-  UNKNOWN = 'UNKNOWN',
-}
-
-interface Alias {
-  alias: string
-}
+export type OrderUserByField = 'email' | 'familyName' | 'givenName'
+export type Projection = 'basic' | 'custom' | 'full'
+export type ViewType = 'admin_view' | 'domain_public'
 
 export default class GoogleDataSource extends RESTDataSource {
   private client: OAuth2Client
@@ -181,5 +173,30 @@ export default class GoogleDataSource extends RESTDataSource {
       `/groups/${params.groupKey}/members/${params.memberKey}`,
       { access_token: token },
     )
+  }
+
+  /**
+   * Retrieves a paginated list of either deleted users or all users in a domain.
+   * https://developers.google.com/admin-sdk/directory/v1/reference/users/list.html
+   * @param params
+   */
+  public async getUsers(params: GetUsersQueryParams) {
+    const token = await this.getAuthorization()
+    return this.get<GetUsersQueryResult>('/users', {
+      access_token: token,
+      ...params,
+    })
+  }
+
+  /**
+   * Retrieves a user's properties
+   * https://developers.google.com/admin-sdk/directory/v1/guides/manage-users#get_user
+   * @param params
+   */
+  public async getUser(params: GetUserQueryParams) {
+    const token = await this.getAuthorization()
+    return this.get<GetUserQueryResult>(`/users/${params.userKey}`, {
+      access_token: token,
+    })
   }
 }

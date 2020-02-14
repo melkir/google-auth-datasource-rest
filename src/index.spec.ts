@@ -22,6 +22,7 @@ describe('GoogleDataSource', () => {
     kind: 'admin#directory#groups',
     etag: expect.any(String),
     groups: expect.any(Array),
+    nextPageToken: expect.any(String),
   }
 
   const groupProperties = {
@@ -50,6 +51,53 @@ describe('GoogleDataSource', () => {
     role: expect.any(String),
     status: expect.any(String),
     type: expect.any(String),
+  }
+
+  const usersProperties = {
+    kind: 'admin#directory#users',
+    etag: expect.any(String),
+    users: expect.any(Array),
+    nextPageToken: expect.any(String),
+  }
+
+  const userProperties = {
+    kind: 'admin#directory#user',
+    etag: expect.any(String),
+    id: expect.any(String),
+    agreedToTerms: expect.any(Boolean),
+    archived: expect.any(Boolean),
+    changePasswordAtNextLogin: expect.any(Boolean),
+    creationTime: expect.any(String),
+    customerId: expect.any(String),
+    emails: expect.arrayContaining([
+      expect.objectContaining({
+        address: expect.any(String),
+        primary: expect.any(Boolean),
+      }),
+    ]),
+    gender: expect.objectContaining({
+      type: expect.any(String),
+    }),
+    includeInGlobalAddressList: expect.any(Boolean),
+    ipWhitelisted: expect.any(Boolean),
+    isAdmin: expect.any(Boolean),
+    isDelegatedAdmin: expect.any(Boolean),
+    isEnforcedIn2Sv: expect.any(Boolean),
+    isEnrolledIn2Sv: expect.any(Boolean),
+    isMailboxSetup: expect.any(Boolean),
+    lastLoginTime: expect.any(String),
+    name: expect.objectContaining({
+      familyName: expect.any(String),
+      fullName: expect.any(String),
+      givenName: expect.any(String),
+    }),
+    orgUnitPath: expect.any(String),
+    primaryEmail: expect.any(String),
+    recoveryEmail: expect.any(String),
+    recoveryPhone: expect.any(String),
+    suspended: expect.any(Boolean),
+    thumbnailPhotoEtag: expect.any(String),
+    thumbnailPhotoUrl: expect.any(String),
   }
 
   it('getAuthorization() should return a token', () => {
@@ -81,5 +129,16 @@ describe('GoogleDataSource', () => {
       memberKey: '104405786331979936146',
     })
     expect(member).toEqual(memberProperties)
+  })
+
+  it('getUsers() should return the users', async () => {
+    const users = await gApi.getUsers({ domain: 'payfit.com' })
+    console.log(users)
+    expect(users).toEqual(usersProperties)
+  })
+
+  it('getUser() should return the users', async () => {
+    const user = await gApi.getUser({ userKey: '115136614780728779802' })
+    expect(user).toEqual(userProperties)
   })
 })
