@@ -8,6 +8,7 @@
   "scripts": {
     "build": "yarn clean && tsc",
     "clean": "rm -rf lib",
+    "prepare": "install-peers",
     "test": "jest"
   },
   "dependencies": {
@@ -18,31 +19,21 @@
     "graphql": "^14.6.0"
   },
   "devDependencies": {
-    "@types/graphql": "^14.5.0",
-    "@types/jest": "^25.1.2",
-    "@types/node": "^13.7.1",
+    "@types/jest": "^25.1.3",
+    "@types/node": "^13.7.4",
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "@yarnpkg/pnpify": "^2.0.0-rc.18",
     "apollo-server-types": "^0.2.10",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-jest": "^23.7.0",
     "google-auth-library": "^5.9.2",
     "graphql": "^14.6.0",
+    "install-peers-cli": "^2.2.0",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "prettier-tslint": "^0.4.2",
-    "ts-jest": "^25.2.0",
-    "tslint": "^6.0.0",
+    "ts-jest": "^25.2.1",
     "typescript": "^3.7.5"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ]
   }
 }
