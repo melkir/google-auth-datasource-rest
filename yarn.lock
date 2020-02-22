@@ -1833,7 +1833,7 @@ globals@^12.1.0:
   dependencies:
     type-fest "^0.8.1"
 
-google-auth-library@^5.9.2:
+google-auth-library@^5.10.0:
   version "5.10.0"
   resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-5.10.0.tgz#53176a64673a3445dc4a536a2d85f927c23b6227"
   integrity sha512-Kfa0GDYYzaRGtvegI64c+oF8Adv3ZW8hWfOegiu53/h4etBdsdXI3uox/TKlyIHKFu8/YhpKv3Z30sJH986YKA==
@@ -4058,7 +4058,7 @@ typedarray-to-buffer@^3.1.5:
   dependencies:
     is-typedarray "^1.0.0"
 
-typescript@^3.7.5:
+typescript@^3.8.2:
   version "3.8.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.2.tgz#91d6868aaead7da74f493c553aeff76c0c0b1d5a"
   integrity sha512-EgOVgL/4xfVrCMbhYKUQTdF37SQn4Iw73H5BgCrF1Abdun7Kwy/QZsE/ssAy0y4LxBbvua3PIbFsbRczWWnDdQ==
