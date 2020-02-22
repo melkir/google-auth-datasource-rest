@@ -1,11 +1,7 @@
 import { OAuth2Client } from 'google-auth-library'
-import GoogleDataSource from '.'
 
-import {
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET,
-  GOOGLE_REFRESH_TOKEN,
-} from '../environment'
+import GoogleDataSource from '.'
+import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, GOOGLE_REFRESH_TOKEN } from '../environment'
 
 describe('GoogleDataSource', () => {
   let gApi: GoogleDataSource
@@ -133,7 +129,6 @@ describe('GoogleDataSource', () => {
 
   it('getUsers() should return the users', async () => {
     const users = await gApi.getUsers({ domain: 'payfit.com' })
-    console.log(users)
     expect(users).toEqual(usersProperties)
   })
 
