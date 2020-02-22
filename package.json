@@ -2,7 +2,7 @@
   "name": "google-auth-datasource-rest",
   "description": "Apollo REST Datasource for querying Google Admin Directory",
   "author": "melkir13@gmail.com",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "license": "ISC",
   "main": "lib/index.js",
   "scripts": {
