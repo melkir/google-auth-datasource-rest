@@ -2,7 +2,7 @@
   "name": "google-auth-datasource-rest",
   "description": "Apollo REST Datasource for querying Google Admin Directory",
   "author": "melkir13@gmail.com",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "license": "ISC",
   "main": "lib/index.js",
   "scripts": {
@@ -41,7 +41,9 @@
     "ts-jest": "^25.2.1",
     "typescript": "^3.8.2"
   },
-  "files": ["/lib"],
+  "files": [
+    "/lib"
+  ],
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
