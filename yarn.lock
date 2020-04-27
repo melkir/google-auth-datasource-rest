@@ -824,10 +824,10 @@ apollo-server-errors@^2.3.4:
   resolved "https://registry.yarnpkg.com/apollo-server-errors/-/apollo-server-errors-2.3.4.tgz#b70ef01322f616cbcd876f3e0168a1a86b82db34"
   integrity sha512-Y0PKQvkrb2Kd18d1NPlHdSqmlr8TgqJ7JQcNIfhNDgdb45CnqZlxL1abuIRhr8tiw8OhVOcFxz2KyglBi8TKdA==
 
-apollo-server-types@^0.2.10:
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/apollo-server-types/-/apollo-server-types-0.2.10.tgz#017ee0c812e70b0846826834eb2c9eda036c1c7a"
-  integrity sha512-ke9ViPEWfW+2XLe66CaKGVZdS7duSLbamSKSprmmeMBd8s6tmjf0FumUVxV7X4quxPZi0OPo8x0LoLU7GWsmaA==
+apollo-server-types@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/apollo-server-types/-/apollo-server-types-0.3.1.tgz#9456e243dad525a78b689246f124a66d7d8ac409"
+  integrity sha512-6nX5VC3icOGf1RZIs7/SYQZff+Cl16LQu1FHUOIk9gAMN2XjlRCyJgCeMj5YHJzQ8Mhg4BO0weWuydEg+JxLzg==
   dependencies:
     apollo-engine-reporting-protobuf "^0.4.4"
     apollo-server-caching "^0.5.1"
