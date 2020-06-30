@@ -14,7 +14,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "apollo-datasource-rest": "^0.7.0"
+    "apollo-datasource-rest": "^0.9.3"
   },
   "peerDependencies": {
     "google-auth-library": "^5.10.1",
